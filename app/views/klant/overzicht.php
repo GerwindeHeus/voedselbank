@@ -22,8 +22,10 @@
                             <th scope="col">Kinderen(>2 jaar)</th>
                             <th scope="col">Babys(<=2 jaar)</th>
                             <th scope="col">Wensen</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">delete</th>
+                            <th scope="col">create</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +33,7 @@
                     </tbody>
 
                 </table>
+
             </div>
             <div class="col-1"></div>
             <div>
