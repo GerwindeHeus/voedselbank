@@ -23,6 +23,15 @@
     return $this->db->single();
   }
 
+  public function updateAllergieForFamilie($familieId, $allergieId)
+{
+    $this->db->query("UPDATE User SET AllergieId = :allergieId WHERE id = :familieId");
+    $this->db->bind(':allergieId', $allergieId);
+    $this->db->bind(':familieId', $familieId);
+    return $this->db->execute();
+}
+
+
    public function getAllergies() {
     $this->db->query('SELECT * FROM `Allergie`');
     return $this->db->resultSet();
