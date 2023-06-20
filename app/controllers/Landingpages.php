@@ -16,5 +16,12 @@ class Landingpages extends Controller
         $this->view('landingpages/index', $data);
     }
 
+     
+    public function add($number1, $number2)
+    {
+        $sum = $number1 + $number2;
+        return $sum;
+    }
+
    
 }

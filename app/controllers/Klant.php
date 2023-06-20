@@ -57,22 +57,7 @@ public function update($id = NULL){
         }
     }
 
-    public function create(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            $this->klantmodel->createKlant($_POST);
-
-            header(" Location: " . URLROOT . "klant/overzicht");
-        
-        }else{
-            $data = [
-                'title' => 'Create een klant'
-            ];
-            $this->view("klant/create", $data);
-        }
-    }
 
      public function delete($id)
     {
