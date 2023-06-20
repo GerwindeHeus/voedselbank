@@ -18,29 +18,37 @@
     }
 
    public function getFamilyById($id) {
-    $this->db->query('SELECT * FROM `Gezin` WHERE `id` = :id');
+    try{$this->db->query('SELECT * FROM `Gezin` WHERE `id` = :id');
     $this->db->bind(':id', $id);
     return $this->db->single();
+    }catch(PDOException $e){
+    }  
   }
 
   public function updateAllergieForFamilie($familieId, $allergieId)
 {
-    $this->db->query("UPDATE User SET AllergieId = :allergieId WHERE id = :familieId");
+  try{$this->db->query("UPDATE User SET AllergieId = :allergieId WHERE id = :familieId");
     $this->db->bind(':allergieId', $allergieId);
     $this->db->bind(':familieId', $familieId);
     return $this->db->execute();
+  }catch(PDOException $e){
+  } 
 }
 
-
    public function getAllergies() {
-    $this->db->query('SELECT * FROM `Allergie`');
+    try{$this->db->query('SELECT * FROM `Allergie`');
     return $this->db->resultSet();
+    }catch(PDOException $e){
+      echo $e->getMessage();
   }
+}
 
    public function deleteFamilie($id) {
-      $this->db->query("DELETE FROM Gezin WHERE id = :id");
+    try{$this->db->query("DELETE FROM Gezin WHERE id = :id");
       $this->db->bind("id", $id, PDO::PARAM_INT);
       return $this->db->execute();
+    }catch(PDOException $e){
+    }
     }
   }
 
