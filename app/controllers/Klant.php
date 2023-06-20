@@ -69,11 +69,36 @@ public function update($id = NULL){
             header("Refresh:3; URL=" . URLROOT . "/klant/index");
         }
     }
-    
+
+    public function addContact(){
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $_POST= filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        $result = $this->klantmodel->addKlant($_POST);
+        if($result){
+            echo "het toevoegen is gelukt";
+            header('location: ' . URLROOT . 'klant/overzicht');
+        }else{
+            echo "het toevoegen is niet gelukt";
+            header('location: ' . URLROOT . 'klant/overzicht');
+        }
+    }
+        else{
+           $data = [
+            'title' => "Klant toevoegen",
+            
+        ];
+        $this->view('klant/create', $data); 
+        }
+          
+    }
+
+ 
+    // Other functions and code within the controller
+
+   
 
     
-    
-  
-  
+
 
 }

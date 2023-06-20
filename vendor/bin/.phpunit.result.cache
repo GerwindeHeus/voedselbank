@@ -1,0 +1,1 @@
+{"version":1,"defects":{"CoreTest::testGetURL#0":5},"times":{"CoreTest::testGetURL#0":0.014,"LandingpagesTest::testAdd#0":0.008,"LandingpagesTest::testAdd#1":0,"LandingpagesTest::testAdd#2":0,"LandingpagesTest::testAdd#3":0}}

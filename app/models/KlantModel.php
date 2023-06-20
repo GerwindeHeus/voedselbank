@@ -75,6 +75,6 @@ public function deleteKlant($id)
     }
 
 
-   
+  
 
 }
