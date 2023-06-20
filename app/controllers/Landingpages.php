@@ -11,7 +11,7 @@ class Landingpages extends Controller
     public function index()
     {
         $data = [
-            'title' => "Homepage MVC OOP Framework"
+            'title' => "Homepage MVC OOP test Framework"
         ];
         $this->view('landingpages/index', $data);
     }
