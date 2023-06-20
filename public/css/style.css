@@ -1,8 +1,25 @@
-table, th, td {
-    border: 1px solid black;
+table,
+th,
+td {
+  border: 1px solid black;
 }
 
-th , td {
-    padding: 5px;
-    text-align: left;
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  margin-top: 4rem;
+}
+
+.form1 {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  font-weight: bold;
 }

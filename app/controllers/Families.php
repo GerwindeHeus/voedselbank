@@ -33,11 +33,41 @@ class Families extends Controller {
     $this->familieModel->deleteFamilie($Id);
 
     $data =[
-      'deleteStatus' => "De allergie is succesvol  = $Id verwijderd!"
+      'deleteStatus' => "De allergie is succesvol verwijderd!"
     ];
     $this->view("familie/delete", $data);
     header("Refresh:3; url=" . URLROOT . "/familie/index");
   }
+
+  public function create() {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Process the create form submission
+    $type = $_POST['type'];
+    
+    $success = $this->allergieModel->createAllergie($type);
+    
+    if ($success) {
+      // Create successful
+      $data = [
+        'createStatus' => "Allergie '$type' is succesvol aangemaakt!"
+      ];
+      $this->view("allergie/create", $data);
+      header("Refresh:3; url=" . URLROOT . "/allergie/index");
+    } else {
+      // Create failed
+      $data = [
+        'createStatus' => "Er is een fout opgetreden bij het aanmaken van de allergie."
+      ];
+      $this->view("allergie/create", $data);
+    }
+  } else {
+    // Display the create form
+    $data = [
+      'title' => 'Create Allergie'
+    ];
+    $this->view('familie/create', $data);
+  }
+}
 
   public function update($id) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,7 +78,7 @@ class Families extends Controller {
       if ($success) {
         // Update successful
         $data = [
-          'updateStatus' => "De allergie voor familie met ID $id is succesvol bijgewerkt!"
+          'updateStatus' => "De allergie voor deze familie  is succesvol bijgewerkt!"
         ];
         $this->view("familie/update", $data);
         header("Refresh:3; url=" . URLROOT . "/familie/index");
