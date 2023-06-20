@@ -50,4 +50,25 @@ class Leverancier extends Controller
         
             $this->view('leverancier/update', $data); 
         }
+
+    public function toevoegen(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $result = $this->leveranciersModel->addLeverancier($_POST);
+            // var_dump($result);exit;
+            if ($result) {
+                echo "Het toevoegen is gelukt";
+                header("Refresh:3; URL=" . URLROOT . "leverancier/overzicht");
+            } else {
+                echo "Internal server error, het toevoegen is niet gelukt";
+                header("Refresh:3; URL=" . URLROOT . "leverancier/overzicht");
+            }
+        } 
+        $data = [
+            'title' => "Leverancier toevoegen"
+        ];
+        $this->view('leverancier/toevoegen', $data);
+    }
+
 }

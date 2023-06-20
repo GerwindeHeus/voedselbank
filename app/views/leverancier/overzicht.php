@@ -38,7 +38,7 @@
             <div class="col-1"></div>
             <div>
 
-                <button style="height: 50px;" type="button" class="btn btn-dark "><a
+                <button style="margin-left:35rem;" type="button" class="btn btn-dark "><a
                         href="<?= URLROOT; ?>leverancier/toevoegen">Toevoegen</a></button>
 
 

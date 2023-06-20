@@ -66,6 +66,19 @@ class LeveranciersModel
 
     }
 
+    public function addLeverancier($post)
+    {
+        //CALL add_leverancier('Gerwin', 'Gerwin@gmail.com', 1234567890, 'test', 'Test, straat 1', '2023-06-03 14:00:00');
+        $this->db->query("CALL add_leverancier(:Naam, :Email, :Telefoonnummer, :Contactpersoon, :Adres, :DatumEerstVolgendeLevering);");
+        $this->db->bind(':Naam', $post['Naam']);
+        $this->db->bind(':Email', $post['Email']);
+        $this->db->bind(':Telefoonnummer', $post['telefoonnummer']);
+        $this->db->bind(':Contactpersoon', $post['bedrijfsnaam']);
+        $this->db->bind(':Adres', $post['adres']);
+        $this->db->bind(':DatumEerstVolgendeLevering', $post['DatumEerstVolgendeLevering']);
+        return  $this->db->execute();
+    }
+
 }
 
 ?>
