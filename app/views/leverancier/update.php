@@ -1,23 +1,23 @@
 <?php require(APPROOT . '/views/includes/Navbar.php');?>
 <h3 class="text-center"><?= $data['title']; ?></h3>
-<form class="form-group" action="<?= URLROOT; ?>leverancier/update" method="post">
+<form style="margin-left: 53rem;" class="form-group" action="<?= URLROOT; ?>leverancier/update" method="post">
     <table>
         <tbody>
             <tr>
                 <td>
-                    <input class="form-control" type="text" name="bedrijfsnaam"
+                    <input class="form-control" type="text" name="bedrijfsnaam" required
                         value="<?= $data['row']->bedrijfsnaam; ?>">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input class="form-control" type="text" name="adres" value="<?= $data['row']->adres; ?>">
+                    <input class="form-control" type="text" name="adres" required value="<?= $data['row']->adres; ?>">
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <input class="form-control" type="text" name="DatumEerstVolgendeLevering"
+                    <input class="form-control" type="text" required name="DatumEerstVolgendeLevering"
                         value="<?= $data['row']->DatumEerstVolgendeLevering; ?>">
                 </td>
             </tr>
@@ -34,7 +34,3 @@
         </tbody>
     </table>
 </form>
-
-<?php
-    var_dump($data['row']);
-?>

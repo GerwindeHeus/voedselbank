@@ -21,9 +21,9 @@ class Leverancier extends Controller
                          <td>$value->bedrijfsnaam</td>
                          <td>$value->adres</td>
                          <td>$value->DatumEerstVolgendeLevering</td>
-                         <td><a href='" . URLROOT . "leverancier/contactPersoon/$value->id'>Contactpersoon</a></td>
-                         <td><a href='" . URLROOT . "leverancier/update/$value->id'>update</a></td>
-                         <td><a href='" . URLROOT . "leverancier/delete/$value->id'>delete</a></td>
+                         <td><a href='" . URLROOT . "leverancier/contactPersoon/$value->id'><img src='" . URLROOT . "/img/persoon.png' alt='Persoon'></a></td>
+                         <td><a href='" . URLROOT . "leverancier/update/$value->id'><img src='" . URLROOT . "/img/edit.png' alt='edit'></a></td>
+                         <td><a href='" . URLROOT . "leverancier/delete/$value->id'><img src='" . URLROOT . "/img/delete.png' alt='delete'></a></td>
                       </tr>";
         }
         
@@ -99,10 +99,10 @@ class Leverancier extends Controller
     public function delete($id)
     {
         if($this->leveranciersModel->deleteLeverancier($id)) {
-            echo "Het deleten is gelukt";
+            echo "De gegevens zijn met succes verwijdert<br>Overt 3 seconden wordt u terug gestuurd naar de overzicht pagina";
             header("Refresh:3; URL=" . URLROOT . "/leverancier/overzicht");
         } else {
-            echo "Internal server error. Raadpleeg de admin";
+            echo "Het is niet gelukt om de gegevens te verwijderen, Probeer het nog een keer<br>Overt 3 seconden wordt u terug gestuurd naar de overzicht pagina";
             header("Refresh:3; URL=" . URLROOT . "/leverancier/overzicht");
         }
     }

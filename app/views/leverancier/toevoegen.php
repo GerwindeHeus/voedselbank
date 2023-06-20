@@ -8,7 +8,7 @@
                     Naam:
                 </td>
                 <td>
-                    <input type="text" name="Naam">
+                    <input type="text" name="Naam" required>
                 </td>
             </tr>
             <tr>
@@ -16,7 +16,7 @@
                     E-mailadres:
                 </td>
                 <td>
-                    <input type="text" name="Email">
+                    <input type="text" name="Email" required>
                 </td>
             </tr>
             <tr>
@@ -24,7 +24,7 @@
                     Telefoonnummer:
                 </td>
                 <td>
-                    <input type="text" name="telefoonnummer">
+                    <input type="text" name="telefoonnummer" required>
                 </td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                     Bedrijfsnaam:
                 </td>
                 <td>
-                    <input type="text" name="bedrijfsnaam">
+                    <input type="text" name="bedrijfsnaam" required>
                 </td>
             </tr>
             <tr>
@@ -40,7 +40,7 @@
                     Adres:
                 </td>
                 <td>
-                    <input type="text" name="adres">
+                    <input type="text" name="adres" required>
                 </td>
             </tr>
             <tr>
@@ -48,7 +48,7 @@
                     Datum Eerst Volgende Levering:
                 </td>
                 <td>
-                    <input type="date" name="DatumEerstVolgendeLevering">
+                    <input type="date" name="DatumEerstVolgendeLevering" required>
                 </td>
             </tr>
 

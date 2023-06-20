@@ -35,7 +35,7 @@
             <div class="col-1"></div>
             <div>
 
-                <button style="margin-left:30rem;" type="button" class="btn btn-dark "><a
+                <button class="button1" style="margin-left:30rem;" type="button" class="btn btn-dark "><a
                         href="<?= URLROOT; ?>leverancier/overzicht">Terug naar overzicht</a></button>
 
 

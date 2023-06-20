@@ -38,8 +38,8 @@
             <div class="col-1"></div>
             <div>
 
-                <button style="margin-left:35rem;" type="button" class="btn btn-dark "><a
-                        href="<?= URLROOT; ?>leverancier/toevoegen">Toevoegen</a></button>
+                <button class="button1" style="margin-left:35rem; text-decoration: none; border: none;" type="button"
+                    class="btn btn-dark "><a href="<?= URLROOT; ?>leverancier/toevoegen">Toevoegen</a></button>
 
 
             </div>
