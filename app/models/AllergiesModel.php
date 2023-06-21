@@ -85,12 +85,12 @@ class AllergiesModel
         return $this->db->resultset();
     }
 
-    public function updateAllergie($id, $allergieId)
+    public function updateAllergie($id, $persoonId)
     {
         try {
-            $this->db->query('UPDATE allergieperpersoon SET allergieId = :allergieid WHERE id = :id');
+            $this->db->query('UPDATE allergieperpersoon SET persoonId = :persoonid WHERE id = :id');
             $this->db->bind("id", $id, PDO::PARAM_INT);
-            $this->db->bind("allergieid", $allergieId, PDO::PARAM_INT);
+            $this->db->bind("persoonid", $persoonId, PDO::PARAM_INT);
             $this->db->execute();
         } catch (PDOException $e) {
             echo $e->getMessage();

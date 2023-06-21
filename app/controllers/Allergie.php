@@ -67,11 +67,11 @@ class Allergie extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $allergieId = $_POST['allergieId'];
+            $persoonId = $_POST['persoonId'];
             $id = $_POST['id'];
 
 
-            $allergie = $this->allergiesModel->updateAllergie($id, $allergieId);
+            $allergie = $this->allergiesModel->updateAllergie($id, $persoonId);
 
             header('location: ' . URLROOT . '/allergie/allergie/' . $id . '');
 
