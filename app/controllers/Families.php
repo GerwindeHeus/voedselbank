@@ -8,101 +8,94 @@ class Families extends Controller {
     $this->familieModel = $this->model('Familie');
   }
 
-  public function index() {
-    $families = $this->familieModel->getFamilies();
+public function index() {
+  $families = $this->familieModel->getFamilies();
 
-    $rows = '';
-    foreach ($families as $value){
-      $rows .= "<tr>
-                  <td>$value->Naam</td>
-                  <td>$value->Volledigenaam</td>
-                  <td>$value->Email</td>
-                  <td>$value->Mobiel</td>
-                  <td>$value->Adres</td>
-                  <td>$value->Woonplaats</td>
-                </tr>";
-    }
-    
-    $data = [
-      'title' => '<h1>Overzicht klanten</h1>',
-      'families' => $rows
-    ];
-    $this->view('familie/index', $data);
+  $rows = '';
+  foreach ($families as $value) {
+    $id = isset($value->id) ? $value->id : '';
+    $rows .= "<tr>
+                <td>$value->Naam</td>
+                <td>$value->Volledigenaam</td>
+                <td>$value->Email</td>
+                <td>$value->Mobiel</td>
+                <td>$value->Adres</td>
+                <td>$value->Woonplaats</td>               
+               <td><a href='" . URLROOT . "/families/update/$value->Id'>update</a></td>
+              </tr>";
   }
 
-  public function delete($Id) {
-    $this->familieModel->deleteFamilie($Id);
-
-    $data =[
-      'deleteStatus' => "De allergie is succesvol verwijderd!"
-    ];
-    $this->view("familie/delete", $data);
-    header("Refresh:3; url=" . URLROOT . "/familie/index");
-  }
-
-  public function create() {
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Process the create form submission
-    $type = $_POST['type'];
-    
-    $success = $this->allergieModel->createAllergie($type);
-    
-    if ($success) {
-      // Create successful
-      $data = [
-        'createStatus' => "Allergie '$type' is succesvol aangemaakt!"
-      ];
-      $this->view("allergie/create", $data);
-      header("Refresh:3; url=" . URLROOT . "/allergie/index");
-    } else {
-      // Create failed
-      $data = [
-        'createStatus' => "Er is een fout opgetreden bij het aanmaken van de allergie."
-      ];
-      $this->view("allergie/create", $data);
-    }
-  } else {
-    // Display the create form
-    $data = [
-      'title' => 'Create Allergie'
-    ];
-    $this->view('familie/create', $data);
-  }
+  $data = [
+    'title' => '<h1>Overzicht klanten</h1>',
+    'families' => $rows
+  ];
+  $this->view('familie/index', $data);
 }
 
-  public function update($id) {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      // Process the update form submission
-      $allergieId = $_POST['allergieId'];
-      $success = $this->familieModel->updateAllergieForFamilie($id, $allergieId);
 
-      if ($success) {
-        // Update successful
-        $data = [
-          'updateStatus' => "De allergie voor deze familie  is succesvol bijgewerkt!"
+
+
+public function update($id)
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+         $voornaam = $_POST['voornaam'];
+         $tussenvoegsel = $_POST['tussenvoegsel'];
+         $achternaam = $_POST['achternaam'];
+         $typePersoon = $_POST['typePersoon'];
+         $geboortedatum = $_POST['geboortedatum'];
+         $straatnaam = $_POST['straatnaam'];
+         $vertegenwoordiger = $_POST['vertegenwoordiger'];
+         $toevoeging = $_POST['toevoeging'];
+         $huisnummer = $_POST['huisnummer'];
+         $woonplaats = $_POST['woonplaats'];
+         $postcode = $_POST['postcode'];
+         $mobiel = $_POST['mobiel'];
+         $email = $_POST['email'];
+
+        $updatedData = [
+            'id' => $id,
+            'voornaam' => $voornaam,
+            'tussenvoegsel' => $tussenvoegsel,
+            'achternaam' => $achternaam,
+            'geboortedatum' => $geboortedatum,
+            'typePersoon' => $typePersoon,
+            'vertegenwoordiger' => $vertegenwoordiger,
+            'straatnaam' => $straatnaam,
+            'huisnummer' => $huisnummer,
+            'toevoeging' => $toevoeging,
+            'postcode' => $postcode,
+            'woonplaats' => $woonplaats,
+            'email' => $email,
+            'mobiel' => $mobiel
         ];
-        $this->view("familie/update", $data);
-        header("Refresh:3; url=" . URLROOT . "/familie/index");
-      } else {
-        // Update failed
-        $data = [
-          'updateStatus' => "Er is een fout opgetreden bij het bijwerken van de allergie voor familie met ID $id."
-        ];
-        $this->view("familie/update", $data);
-      }
+        $this->familieModel->updateFamily($updatedData);
+
+        // Redirect to the index or success page
+        header("Location: " . URLROOT . "/families/index");
+        exit;
     } else {
-      // Display the update form
-      $family = $this->familieModel->getFamilyById($id);
 
-      $allergies = $this->familieModel->getAllergies();
+$family = $this->familieModel->getFamilyById($id);
 
-      $data = [
-        'title' => '<h1>Update Familie Allergie</h1>',
-        'family' => $family,
-        'allergies' => $allergies
-      ];
-      $this->view('familie/update', $data);
-    }
-  }
+if ($family !== null) {
+    // Prepare the data to be passed to the view
+    $data = [
+        'title' => 'Update Family',
+        'family' => $family
+    ];
+} else {
+    // If family data is not found, you can handle the error or show an appropriate message
+    $data = [
+        'title' => 'Update Family',
+        'updateStatus' => 'No family data found.'
+    ];
+}
+
+// Load the view
+$this->view('familie/update', $data);
+
+}
+}
+
 }
 ?>
