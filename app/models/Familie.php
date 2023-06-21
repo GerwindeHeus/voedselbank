@@ -8,10 +8,12 @@
     }
 
     public function getFamilies() {
-        $this->db->query("SELECT Gezin.*, Allergie.Type as Allergie FROM Gezin                    
-                          INNER JOIN User ON Gezin.id = User.GezinId
-                          INNER JOIN Allergie ON User.AllergieId = Allergie.id
-                          WHERE User.IsActive = 1;
+        $this->db->query("SELECT ContactPerGezin.Id, Gezin.Naam, Contact.Straat, Contact.Adres, Contact.Huisnummer, Contact.Toevoeging, Contact.Postcode, Contact.Woonplaats, Contact.Email, Contact.Mobiel, Persoon.Voornaam, Persoon.Tussenvoegsel, Persoon.Achternaam, Persoon.Volledigenaam, Persoon.Geboortedatum, Persoon.TypePersoon, Persoon.IsVertegenwoordiger
+FROM ContactPerGezin
+INNER JOIN Gezin ON ContactPerGezin.GezinId = Gezin.Id
+INNER JOIN Contact ON ContactPerGezin.ContactId = Contact.Id
+INNER JOIN Persoon ON Persoon.GezinId = Gezin.Id;
+
 ");
         $result = $this->db->resultSet();
         return $result;
