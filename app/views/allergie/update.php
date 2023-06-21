@@ -11,7 +11,7 @@
     <select name="allergieId" id="allergieId">
         <!-- <option selected value="<?= $data['allergieId'] ?>"><?= $data['allergieType'] ?></option> -->
         <?php foreach ($data['allergie'] as $allergie) : ?>
-        <option value="<?php echo $allergie->id; ?>"><?php echo $allergie->type; ?></option>
+        <option value="<?php echo $allergie->id; ?>"><?php echo $allergie->Naam; ?></option>
         <?php endforeach; ?>
     </select>
     <input type="hidden" name="id" value="<?= $data['id'] ?>">
