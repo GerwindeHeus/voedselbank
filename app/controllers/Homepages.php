@@ -3,7 +3,7 @@ class HomePages extends Controller {
 
   public function index() {
     $data = [
-      'title' => "Welcome to the HomePage"
+      'title' => "Homepage voedselbank maaskantje"
     ];
     $this->view('homepages/index', $data);
   }
