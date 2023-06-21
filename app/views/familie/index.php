@@ -17,10 +17,13 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Naam</th>
-                            <th scope="col">Allergie</th>
-                            <th scope="col">delete</th>
-                            <th scope="col">edit</th>
+                            <th scope="col">Naam Gezin</th>
+                            <th scope="col">Vertegenwoordiger</th>
+                            <th scope="col">E-mailadres</th>
+                            <th scope="col">Mobiel</th>
+                            <th scope="col">Adres</th>
+                            <th scope="col">Woonplaats</th>
+                            <th scope="col">Klant Details</th>
                         </tr>
                     </thead>
                     <tbody>
