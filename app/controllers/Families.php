@@ -15,15 +15,16 @@ class Families extends Controller {
     foreach ($families as $value){
       $rows .= "<tr>
                   <td>$value->Naam</td>
-                  <td>$value->Allergie</td>
-                  <td><a href='" . URLROOT . "/families/delete/$value->id'>delete</a></td>
-                  <td><a href='" . URLROOT . "/families/update/$value->id'>update</a></td>
+                  <td>$value->Volledigenaam</td>
+                  <td>$value->Email</td>
+                  <td>$value->Mobiel</td>
+                  <td>$value->Adres</td>
+                  <td>$value->Woonplaats</td>
                 </tr>";
     }
-
-
+    
     $data = [
-      'title' => '<h1>Families</h1>',
+      'title' => '<h1>Overzicht klanten</h1>',
       'families' => $rows
     ];
     $this->view('familie/index', $data);
