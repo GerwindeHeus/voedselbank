@@ -32,6 +32,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= URLROOT; ?>leverancier/overzicht">Leverancier</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= URLROOT; ?>Allergie/overzicht">Overzicht gezinsllergieen</a>
+            </li>
         </ul>
     </div>
 </nav>
