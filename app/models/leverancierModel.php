@@ -12,6 +12,7 @@ Class LeverancierModel{
         {
             // Voer een query uit om klantgegevens op te halen
             $this->db->query("SELECT Leverancier.Naam,
+                                     Leverancier.Id,
                                      ContactPersoon,
                                      Email, 
                                      Mobiel, 
@@ -24,28 +25,43 @@ Class LeverancierModel{
             return $results;
         }
     }
-     public function getProduct($id){
-    $this->db->query("SELECT Leverancier.Naam, Product.SoortAllergie, Product.Barcode, Product.Houdbaarheidsdatum
-    FROM Leverancier
-    INNER JOIN ProductPerLeverancier ON Leverancier.id = ProductPerLeverancier.LeverancierId
-    INNER JOIN Product ON Product.id = ProductPerLeverancier.ProductId
-    WHERE Leverancier.id = :id");
-    
-    $this->db->bind(':id', $id, PDO::PARAM_INT);
+     public function getProduct($Id)
+      {
+        try {
+            $this->db->query(' SELECT CPL.Id as CPLId, 
+       LEV.Naam as Naam,
+       PRO.SoortAllergie, 
+       PRO.Barcode,
+       PRO.Houdbaarheidsdatum 
+        FROM ProductPerLeverancier as CPL 
+        INNER JOIN Product as PRO 
+        ON PRO.Id = CPL.ProductId
+        INNER JOIN Leverancier as LEV 
+        ON LEV.Id = CPL.LeverancierId
+        WHERE CPL.id = :id;');
+            $this->db->bind(':id', $Id);
+            return $this->db->resultSet();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
-    return $this->db->resultSet();
-}
+  public function getLeverancierId($Id){
+        $this->db->query("SELECT 
+                                 LEV.Naam 
+                                ,LEV.LeverancierType
+                                ,LEV.LeverancierNummer
+                                ,LEV.Id
+                            FROM    
+                                Leverancier AS LEV
+                            WHERE 
+                                LEV.Id = :id");
+        $this->db->bind(':id', $Id, PDO::PARAM_INT);
+
+        return $this->db->resultSet();
+    }
 
     
-     
-public function getLeveranciersByType($leverancierType)
-{
-    $this->db->query("SELECT Naam, ContactPersoon, Email, Mobiel, LeverancierNummer, LeverancierType
-                      FROM Leverancier
-                      INNER JOIN ContactPerLeverancier ON Leverancier.id = ContactPerLeverancier.LeverancierId
-                      INNER JOIN Contact ON ContactPerLeverancier.ContactId = Contact.id
-                      WHERE LeverancierType = :leverancierType");
-    $this->db->bind(':leverancierType', $leverancierType);
-    return $this->db->resultSet();
-}
+
+
 }

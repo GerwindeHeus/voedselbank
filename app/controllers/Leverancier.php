@@ -15,20 +15,20 @@ class Leverancier extends Controller
 public function overzicht()
 {
     $results = $this->leverancierModel->getLeveranciers();
-    var_dump($results);
+
     $rows = '';
     foreach ($results as $value) {
         // Genereer HTML-rijen voor elke klant
         $rows .= "<tr>
-                     <td>$value->Naam</td>
-                     <td>$value->ContactPersoon</td>
-                     <td>$value->Email</td>
-                     <td>$value->Mobiel</td>
-                     <td>$value->LeverancierNummer</td>
-                     <td>$value->LeverancierType</td>
-                     <td><a href='" . URLROOT . "leverancier/product/" . $value->id . "'><img src='" . URLROOT . "/img/product.svg' alt='update'></a>
-</td>
-                   </tr>";
+             <td>$value->Naam</td>
+             <td>$value->ContactPersoon</td>
+             <td>$value->Email</td>
+             <td>$value->Mobiel</td>
+             <td>$value->LeverancierNummer</td>
+             <td>$value->LeverancierType</td>             
+             <td><a href='" . URLROOT . "leverancier/product/" . $value->Id . "'><img src='" . URLROOT . "/img/product.svg' alt='update'></a>
+          </td>
+          </tr>";
     }
 
     $data = [
@@ -38,40 +38,40 @@ public function overzicht()
     $this->view('leverancier/overzicht', $data);
 }
 
-public function product($id)
+public function product($Id)
 {
-    $result = $this->leverancierModel->getProduct($id);
+    $result = $this->leverancierModel->getLeverancierId($Id);
+    $records = $this->leverancierModel->getProduct($Id);
    
     $rows = '';
-    foreach ($result as $value) {
+    foreach ($records as $value) {
         $rows .= "<tr>
+
                      <td>$value->Naam</td>
                      <td>$value->SoortAllergie</td>
                      <td>$value->Barcode</td>
                      <td>$value->Houdbaarheidsdatum</td>
+                     <td><a href='" . URLROOT . "leverancier/edit/" .  "'><img src='" . URLROOT . "/img/pen.svg' alt='update'></a>
                   </tr>";
     }
     $data = [
-        'title' => "Overzicht Producten",
-        'rows' => $rows,
-        
-    ];
-    $this->view('leverancier/product', $data);
+    'title' => "Overzicht Producten",
+    'rows' => $rows,
+    'naam' => $result[0]->Naam,
+    'leverancierNummer' => $result[0]->LeverancierNummer,
+    'leverancierType' => $result[0]->LeverancierType
+];
+$this->view('leverancier/product', $data);
 }
 
-
-
-
-public function getLeveranciersByType()
-{
-
-    $leverancierType = $_POST['leverancierType'];
-    $leveranciers = $this->leverancierModel->getLeveranciersByType($leverancierType);
-
+public function edit(){
     $data = [
-        'leveranciers' => $leveranciers
+        'title' => "Wijzig Product"
     ];
-    $this->view('leverancier/overzicht', $data);
+    $this->view('leverancier/edit', $data);
 }
+
+
+
 
 }

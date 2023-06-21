@@ -1,7 +1,7 @@
 <h3 class="text-success"><?= $data['title'] ?></h3>
-<h5 class="text-center">Naam Leverancier: <?= $data['Naam'] ?></h5>
-<h5 class="text-center">Naam Leverancier: <?= $data['LeverancierNummer'] ?></h5>
-<h5 class="text-center">Naam Leverancier: <?= $data['LeverancierType'] ?></h5>
+<h5 class="text-center">Naam Leverancier: <?= $data['naam'] ?></h5>
+<h5 class="text-center">LeverancierNummer: <?= $data['leverancierNummer'] ?></h5>
+<h5 class="text-center">LeverancierType: <?= $data['leverancierType'] ?></h5>
 
 
 <div class="class=" d-flex" style="height: 50px;"">
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <?= $data['rows'] ?> -->
+                        <?= $data['rows'] ?>
                     </tbody>
                 </table>
 
