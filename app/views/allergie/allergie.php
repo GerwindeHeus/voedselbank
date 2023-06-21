@@ -2,6 +2,10 @@
 
 
 <h3 class="" style="margin-left: 8rem;"><?= $data['title'] ?></h3>
+<h4 class="" style="margin-left: 8rem;">Naam: <?= $data['Naam'] ?></h4>
+<h4 class="" style="margin-left: 8rem;">Omschrijving: <?= $data['Omschrijving'] ?></h4>
+
+
 
 
 <div class="class=d-flex" style="height: 10px;">
@@ -23,12 +27,10 @@
                 <thead>
                     <tr>
                         <th scope="col">Naam</th>
-                        <th scope="col">Omschrijving</th>
-                        <th scope="col">Volwassenen</th>
-                        <th scope="col">Kinderen</th>
-                        <th scope="col">Babys</th>
-                        <th scope="col">Vertegenwoordiger</th>
-                        <th scope="col">Allergie Details</th>
+                        <th scope="col">Type Persoon</th>
+                        <th scope="col">Gezinsrol</th>
+                        <th scope="col">Allergie</th>
+                        <th scope="col">Wijzig Allergie</th>
                     </tr>
                 </thead>
                 <tbody>
