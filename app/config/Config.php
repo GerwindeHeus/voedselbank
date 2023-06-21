@@ -3,7 +3,7 @@
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '');
-    define('DB_NAME', 'leverancier');
+    define('DB_NAME', 'Leverancierdb');
 
     //het padd naar de app map
     define('APPROOT', dirname(dirname(__FILE__)));

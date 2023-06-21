@@ -1,4 +1,9 @@
 <h3 class="text-success"><?= $data['title'] ?></h3>
+<h5 class="text-center">Naam Leverancier: <?= $data['Naam'] ?></h5>
+<h5 class="text-center">Naam Leverancier: <?= $data['LeverancierNummer'] ?></h5>
+<h5 class="text-center">Naam Leverancier: <?= $data['LeverancierType'] ?></h5>
+
+
 <div class="class=" d-flex" style="height: 50px;"">
 </div>
 
@@ -6,7 +11,7 @@
 <head>
     <meta charset=" utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Leverancier</title>
+    <title>product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </head>
@@ -21,16 +26,14 @@
                     <thead>
                         <tr>
                             <th scope="col">Naam</th>
-                            <th scope="col">ContactPersoon</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Mobiel</th>
-                            <th scope="col">LeverancierNummer</th>
-                            <th scope="col">LeverancierType</th>
-                            <th scope="col">Product Details</th>
+                            <th scope="col">Soort Allergie</th>
+                            <th scope="col">Barcode</th>
+                            <th scope="col">Houdbaarheidsdatum</th>
+                            <th scope="col">Wijzig product</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?= $data['rows'] ?>
+                        <!-- <?= $data['rows'] ?> -->
                     </tbody>
                 </table>
 
