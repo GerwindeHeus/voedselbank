@@ -1,3 +1,3 @@
-<h3><?= $data['title'] ?></h3>
-<a href="<?= URLROOT . 'example/index'; ?>">Example</a>
+<h1><?= $data['title'] ?></h1>
+<a href="<?= URLROOT . 'leverancier/overzicht'; ?>">Overzicht Leverancier</a>
 <br>
