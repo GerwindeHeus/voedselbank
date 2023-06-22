@@ -21,3 +21,16 @@ td {
   border-radius: 20px;
   padding: 0.5rem;
 }
+.text-center {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  margin-top: 4rem;
+}
+
+.form1 {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+}

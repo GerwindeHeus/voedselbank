@@ -38,6 +38,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= URLROOT; ?>leverancier/overzicht">Dag 3 Henk</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= URLROOT; ?>families/index">Dag 3 Andrej</a>
+            </li>
         </ul>
     </div>
 </nav>
