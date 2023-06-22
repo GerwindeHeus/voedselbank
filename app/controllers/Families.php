@@ -75,7 +75,8 @@ public function update($id)
         exit;
     } else {
 
-$family = $this->familieModel->getFamilyById($id);
+$family = $this->familieModel->getPersoonById($id);
+var_dump($family);
 
 if ($family !== null) {
     // Prepare the data to be passed to the view

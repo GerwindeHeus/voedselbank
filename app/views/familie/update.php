@@ -5,7 +5,7 @@
 <?php if (isset($data['family'])) : ?>
     <form method="POST" action="<?php echo URLROOT; ?>/families/update/<?php echo $data['family']->Id; ?>">
         <label for="voornaam">Voornaam:</label>
-        <input type="text" name="voornaam" value="<?php echo $data['family']->Naam; ?>" required><br>
+        <input type="text" name="voornaam" value="<?php echo $data['family']->Voornaam; ?>" required><br>
 
         <label for="tussenvoegsel">Tussenvoegsel:</label>
         <input type="text" name="tussenvoegsel" value="<?php echo isset($data['family']->Tussenvoegsel) ? $data['family']->Tussenvoegsel : ''; ?>"><br>
@@ -18,7 +18,7 @@
         <input type="text" name="geboortedatum" value="<?php echo isset($data['family']->Geboortedatum) ? $data['family']->Geboortedatum : ''; ?>" required><br>
 
         <label for="typePersoon">Type Persoon:</label>
-        <input type="text" name="typePersoon" value="<?php echo isset($data['family']->TypePerson) ? $data['family']->TypePersoon : ''; ?>" required><br>
+        <input type="text" name="typePersoon" value="<?php echo isset($data['family']->TypePersoon) ? $data['family']->TypePersoon : ''; ?>" required><br>
 
         <label for="vertegenwoordiger">Vertegenwoordiger:</label>
         <input type="text" name="vertegenwoordiger" value="<?php echo isset($data['family']->Vertegenwoordiger) ? $data['family']->Vertegenwoordiger : ''; ?>" required><br>

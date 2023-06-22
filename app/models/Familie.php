@@ -26,10 +26,19 @@
     }catch(PDOException $e){
     }  
   }
+  
+   public function getPersoonById($id) {
+     try{$this->db->query('SELECT * FROM `Persoon` WHERE `id` = :id');
+    $this->db->bind(':id', $id);
+    return $this->db->single();
+    }catch(PDOException $e){
+    }  
+}
+
 
   public function updateAllergieForFamilie($familieId, $allergieId)
 {
-  try{$this->db->query("UPDATE User SET AllergieId = :allergieId WHERE id = :familieId");
+    try{$this->db->query("UPDATE User SET AllergieId = :allergieId WHERE id = :familieId");
     $this->db->bind(':allergieId', $allergieId);
     $this->db->bind(':familieId', $familieId);
     return $this->db->execute();
@@ -39,7 +48,7 @@
 
 public function updateContactForFamilie($familieId, $contactId)
 {
-  try {
+    try {
     $this->db->query("UPDATE Gezin SET ContactId = :contactId WHERE id = :familieId");
     $this->db->bind(':contactId', $contactId);
     $this->db->bind(':familieId', $familieId);
