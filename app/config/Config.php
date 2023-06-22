@@ -8,10 +8,10 @@
     //define('DB_NAME', 'Leverancierdb');
 
     //Database Gerwin Dag 3
-    //define('DB_NAME', 'VoedselbankMaaskantje');
+    define('DB_NAME', 'VoedselbankMaaskantje');
 
     //Database Gerwin Dag 2
-    define('DB_NAME', 'Voedselbank');
+    //define('DB_NAME', 'Voedselbank');
 
     //Database Andrej Dag 3
     //define('DB_NAME', 'Voedselbank3');

@@ -25,7 +25,7 @@ class Allergie extends Controller
             // Haal de gegevens van het gezin op
             $allergieen = $this->allergiesModel->getAllergieById($post['Allergie']);
            
-            // Check of er data is gevonden voor het gezin
+            // Check of er data is gevonden voor het allergie
             if (empty($allergieen)) {
                 // Zet de benodinge data in een array
                 $data = [
