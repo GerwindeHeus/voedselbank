@@ -3,7 +3,7 @@
  * 
  */
 class Core {
-  protected $currentController = 'Homepages';
+  protected $currentController = 'Landingpages';
   protected $currentMethod = 'index';
   protected $params = [];
 
@@ -53,7 +53,7 @@ class Core {
       $url = explode('/', $url);     
       return $url;
     } else {      
-      return array('homepages', 'index');
+      return array('Landingpages', 'index');
     }
 
   }

@@ -1,11 +1,11 @@
 <?php
-class HomePages extends Controller {
+class Landingpages extends Controller {
 
   public function index() {
     $data = [
       'title' => "Homepage voedselbank maaskantje"
     ];
-    $this->view('homepages/index', $data);
+    $this->view('landingpages/index', $data);
   }
   public function add($number1, $number2)
     {
