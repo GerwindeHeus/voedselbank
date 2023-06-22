@@ -11,8 +11,13 @@ class Landingpages extends Controller
     public function index()
     {
         $data = [
-            'title' => "Homepage voedselbank maaskantje"
+            'title' => "Homepage MVC OOP test Framework"
         ];
         $this->view('landingpages/index', $data);
+    }
+    public function add($number1, $number2)
+    {
+        $sum = $number1 + $number2;
+        return $sum;
     }
 }
