@@ -30,7 +30,7 @@
                 <a class="nav-link" href="#">Klant</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= URLROOT; ?>leverancier/overzicht">Leverancier</a>
+                <a class="nav-link" href="<?= URLROOT; ?>leveranciers/overzicht">Leverancier</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= URLROOT; ?>Allergie/overzicht">Overzicht gezinsllergieen</a>

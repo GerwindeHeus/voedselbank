@@ -1,6 +1,6 @@
 <?php require(APPROOT . '/views/includes/Navbar.php');?>
 <h3 class="text-center"><?= $data['title']; ?></h3>
-<form style="margin-left: 53rem;" class="form-group" action="<?= URLROOT; ?>leverancier/update" method="post">
+<form style="margin-left: 53rem;" class="form-group" action="<?= URLROOT; ?>leveranciers/update" method="post">
     <table>
         <tbody>
             <tr>

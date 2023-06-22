@@ -39,7 +39,7 @@
             <div>
 
                 <button class="button1" style="margin-left:35rem; text-decoration: none; border: none;" type="button"
-                    class="btn btn-dark "><a href="<?= URLROOT; ?>leverancier/toevoegen">Toevoegen</a></button>
+                    class="btn btn-dark "><a href="<?= URLROOT; ?>leveranciers/toevoegen">Toevoegen</a></button>
 
 
             </div>

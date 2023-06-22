@@ -36,7 +36,7 @@
             <div>
 
                 <button class="button1" style="margin-left:30rem;" type="button" class="btn btn-dark "><a
-                        href="<?= URLROOT; ?>leverancier/overzicht">Terug naar overzicht</a></button>
+                        href="<?= URLROOT; ?>leveranciers/overzicht">Terug naar overzicht</a></button>
 
 
             </div>
