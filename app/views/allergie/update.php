@@ -3,6 +3,8 @@
 
 <h3 class="" style="margin-left: 8rem;"><?= $data['title'] ?></h3>
 
+
+
 <?php if (isset($data['updateStatus'])) : ?>
 <p><?php echo $data['updateStatus']; ?></p>
 <?php else : ?>
@@ -11,10 +13,10 @@
     <select name="allergieId" id="allergieId">
         <!-- <option selected value="<?= $data['allergieId'] ?>"><?= $data['allergieType'] ?></option> -->
         <?php foreach ($data['allergie'] as $allergie) : ?>
-        <option value="<?php echo $allergie->id; ?>"><?php echo $allergie->Naam; ?></option>
+        <option value=""><?php echo $allergie->Naam; ?></option>
         <?php endforeach; ?>
     </select>
-    <input type="hidden" name="id" value="<?= $data['id'] ?>">
+    <input type="hidden" name="id" value="<?= $data['allergie'] ?>">
     <input type="submit" value="Update">
 </form>
 <?php endif; ?>

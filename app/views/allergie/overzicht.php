@@ -1,12 +1,25 @@
 <?php require(APPROOT . '/views/includes/Navbar.php');?>
 
+<h2><?= $data['titel'] ?></h2>
 
-<h3 class="" style="margin-left: 8rem;"><?= $data['title'] ?></h3>
+
+<div class="row-form" style="margin-left: 58rem;">
+
+    <form action="" method="post">
+        <select name="Allergie" id="">
+            <option value="" disabled selected hidden>Selecteer Allergie</option>
+            <?php echo $data['allergieOptions']; ?>
+        </select>
+        <button type="submit">Toon Gezinnen</button>
+    </form>
+</div>
 
 
 <div class="class=d-flex" style="height: 10px;">
 
 </div>
+
+
 
 <head>
     <meta charset=" utf-8">
@@ -37,4 +50,4 @@
 
             </table>
         </div>
-        <div class="col-1"></div>
+        <div class=" col-1"></div>

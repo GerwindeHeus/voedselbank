@@ -37,6 +37,36 @@ class AllergiesModel
         }
     }
 
+    public function getGezinById($id = NULL)
+    { try {
+        $this->db->query("SELECT 
+                                Per.Volledigenaam 
+                                ,Per.Id as PersoonId
+                                ,per.TypePersoon 
+                                ,per.IsVertegenwoordiger
+                                ,Gez.Id as GezinId
+                                ,Gez.Naam as GezinNaam
+                                ,Gez.Omschrijving
+                                ,Gez.TotaalAantalPersonen
+                                ,ALG.Naam as AllergieNaam
+                               
+                                FROM
+                                    gezin as GEZ
+                                INNER JOIN persoon as PER
+                                    ON PER.GezinId = GEZ.id
+                                INNER JOIN allergieperpersoon as APP
+                                    ON APP.PersoonId = PER.id
+                                INNER JOIN allergie as ALG
+                                    ON APP.AllergieId = ALG.id
+                                    WHERE Gez.Id = :id");
+        $this->db->bind(':id', $id, PDO::PARAM_INT);
+        $result = $this->db->resultSet();
+        return $result;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    }
+
     public function getPersoon1($Id){
         $this->db->query("
                                 SELECT 
@@ -84,6 +114,40 @@ class AllergiesModel
         $this->db->bind(':id', $id, PDO::PARAM_INT);
         return $this->db->resultset();
     }
+
+    public function getAllergieById($id = NULL)
+    { try {
+        $this->db->query("SELECT
+                                Gez.Id as GezinsId
+                                ,GEZ.Omschrijving as GezinOmschrijving
+                                ,GEZ.AantalVolwassenen
+                                ,GEZ.AantalKinderen
+                                ,GEZ.AantalBabys
+                                ,Gez.Naam as GezinNaam
+                                ,Gez.Omschrijving
+                                ,ALG.Omschrijving as AllergieOmschrijving
+                                ,ALG.Naam as AllergieNaam
+                                ,ALG.Id as AllergieId
+                                ,PER.Volledignaam
+                                ,PER.Id as PersoonId
+                                ,PER.TypePersoon 
+                                ,PER.IsVertegenwoordiger
+                                FROM
+                                    gezin as GEZ
+                                INNER JOIN persoon as PER
+                                    ON PER.GezinId = GEZ.id
+                                INNER JOIN allergieperpersoon as APP
+                                    ON APP.PersoonId = PER.id
+                                INNER JOIN allergie as ALG
+                                    ON APP.AllergieId = ALG.id
+                                    WHERE IsVertegenwoordiger = 1 AND ALG.id = :id");
+    $this->db->bind(':id', $id, PDO::PARAM_INT);
+    $result = $this->db->resultSet();
+    return $result;
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+}
 
     public function updateAllergie($id, $persoonId)
     {

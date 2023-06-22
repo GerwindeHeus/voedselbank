@@ -13,12 +13,51 @@ class Allergie extends Controller
     //functie om alle leveranciers op te halen op de overzicht pagina
     public function index()
     {
-        $result = $this->allergiesModel->getPersoon();
-        
-       
-        $rows = '';
-        foreach ($result as $value) {
-            $rows .= "<tr>
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Filter de post array
+            $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            // Check of de post array niet leeg is
+            if (empty($post)) {
+                header('location: ' . URLROOT . 'allergie/overzicht');
+            }
+
+            // Haal de gegevens van het gezin op
+            $allergieen = $this->allergiesModel->getAllergieById($post['Allergie']);
+           
+            // Check of er data is gevonden voor het gezin
+            if (empty($allergieen)) {
+                // Zet de benodinge data in een array
+                $data = [
+                    'titel' => 'Overzicht gezinnen met Allergieën',
+                    'rows' => '<tr><td id="error" colspan="7">Er zijn geen gezinnen bekent die de geselecteerde allergie hebben</td></tr>'
+                ];
+                // Laad de view
+                $this->view('allergie/overzicht', $data);
+                exit;
+            } else {
+                // Maak een row aan met de gegevens van het gezin
+                $rows = '';
+                foreach ($allergieen as $value) {
+                    $rows .= "<tr>
+                         <td>$value->GezinNaam</td>
+                         <td>$value->Omschrijving</td>
+                         <td>$value->AantalVolwassenen</td>
+                         <td>$value->AantalKinderen</td>
+                         <td>$value->AantalBabys</td>
+                         <td>$value->Volledignaam</td>
+                         <td><a href='" . URLROOT . "allergie/allergie/$value->GezinsId'><img src='" . URLROOT . "/img/details.png' alt='details'></a></td>
+                      </tr>";
+                };
+            }
+        } else {
+            // Haal alle gezinnen en allergieen op
+            $allergieen = $this->allergiesModel->getPersoon();
+            
+            // Check of er data is gevonden voor het gezin en de allergieen
+            $rows = '';
+            foreach ($allergieen as $value) {
+                $rows .= "<tr>
                          <td>$value->Naam</td>
                          <td>$value->Omschrijving</td>
                          <td>$value->AantalVolwassenen</td>
@@ -27,15 +66,31 @@ class Allergie extends Controller
                          <td>$value->Volledignaam</td>
                          <td><a href='" . URLROOT . "allergie/allergie/$value->id'><img src='" . URLROOT . "/img/details.png' alt='details'></a></td>
                       </tr>";
+            };
         }
-        
-        $data = [
-            'title' => "Overzicht gezinnen met allergieën",
-            'rows' => $rows,
+        // Haal alle allergieen op
+        $allergie = $this->allergiesModel->getAllergieAll();
+        // Maak een optie aan voor elke allergie
+        $allergieOptions = '';
+        foreach ($allergie as $value) {
+            $allergieOptions .= "<option value='$value->id'>$value->Naam</option>";
             
+        }
+       
+
+        // Maak een array aan met alle benodigde data voor de view
+        $data = [
+            'titel' => 'Overzicht gezinnen met Allergieën',
+            'rows' => $rows,
+            'allergieOptions' => $allergieOptions
         ];
+
+        // Laad de view
         $this->view('allergie/overzicht', $data);
     }
+        
+
+        
 
     public function allergie($id)
     {
